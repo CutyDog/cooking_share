@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   namespace :api, format: 'json' do
     resources :posts, only: [:index, :create, :update]
+    post "users", to: "users#create"
     post "auth/verification", to: "auth#verification"
     get  "user/profile", to: "users#profile"
     post "user/log_out", to: "users#log_out"    

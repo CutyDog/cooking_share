@@ -1,4 +1,13 @@
 class Api::UsersController < Api::Base
+  def create
+    u = User.new(user_params)
+    u.save!
+    cookies[:authed] = { value: u.set_session_key, expires: 1.hour.from_now }
+    render json: {state:"success",msg:"Login Success"} , status: 200
+  rescue
+    render json: {state:"failure",msg:"Error"} , status: 403
+  end
+
   def profile
     # Cookieがなければ、無条件にエラー
     return render json: {state:"failure",msg:"Error"} , status: 403 if cookies[:authed].nil?
@@ -28,5 +37,11 @@ class Api::UsersController < Api::Base
     else
       render json: {state:"failure",msg:"Error"} , status: 403
     end
+  end
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :password)
   end
 end
