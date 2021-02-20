@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   
+  has_many :posts
+  
   require 'digest'
   has_secure_password
 

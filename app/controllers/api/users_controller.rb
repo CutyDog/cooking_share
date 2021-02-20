@@ -3,7 +3,7 @@ class Api::UsersController < Api::Base
     u = User.new(user_params)
     u.save!
     cookies[:authed] = { value: u.set_session_key, expires: 1.hour.from_now }
-    render json: {state:"success",msg:"Login Success"} , status: 200
+    render json: {state:"success",msg:"Signin Success"} , status: 200
   rescue
     render json: {state:"failure",msg:"Error"} , status: 403
   end
