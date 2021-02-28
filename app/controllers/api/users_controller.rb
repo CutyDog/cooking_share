@@ -8,7 +8,7 @@ class Api::UsersController < Api::Base
     render json: {state:"failure",msg:"Error"} , status: 403
   end
 
-  def profile
+  def log_in
     # Cookieがなければ、無条件にエラー
     return render json: {state:"failure",msg:"Error"} , status: 403 if cookies[:authed].nil?
 
@@ -17,11 +17,12 @@ class Api::UsersController < Api::Base
 
     # usermが取得できていれば、nameを返す
     if user
-      render json: {state:"success",msg:"User profile",profile: {name:user.name } } , status: 200
+      render json: {state:"success",msg:"User profile",log_in: {name:user.name } } , status: 200
     else
       render json: {state:"failure",msg:"Error"} , status: 403
     end
   end
+  
 
   def log_out
 

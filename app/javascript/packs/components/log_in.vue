@@ -1,13 +1,33 @@
 <template>
   <div class="log_in">
-    Log In
-    <div>
-      <div>{{ this.message }}</div>
-      <input type="string" v-model="name" placeholder="NAME" /><br />
-      <input type="string" v-model="password" placeholder="PASSWORD" /><br />
-      <button v-on:click="login()">LOGIN</button>
-      <router-link to="/sign_in">SIGNIN</router-link>
-    </div>
+    <div class="container">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="name" v-model="name" class="materialize-textarea"></textarea>
+              <label for="name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="password" v-model="password" class="materialize-textarea"></textarea>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="col s12 offset-s4">
+            <button v-on:click="login()" class="btn waves-effect waves-light" name="action">
+              Log In
+            </button>  
+          </div>
+          <div class="col s12 offset-s4">
+            <router-link to="/sign_in">
+              <button class="waves-effect waves-light btn">Sign In</button>
+            </router-link>
+          </div>
+        </form>
+      </div>
+    </div> 
   </div>
 </template>
 
@@ -16,13 +36,11 @@ const axios = require("axios");
 const qs = require("qs");
 
 export default {
-  name: "logIn",
   components: {},
   data: function () {
     return {
       name: "",
       password: "",
-      message: "",
     };
   },
   methods: {
@@ -43,7 +61,7 @@ export default {
         });
 
       if (result.data.state == "success") {
-        this.$router.push("/");
+        this.$router.push("../mypage.vue");
       }
     },
   },

@@ -1,8 +1,8 @@
 <template>
-  <div class="log_in">
+  <div class="sign_in">
     Sign In
     <div>
-      <div>{{ this.message }}</div>
+      <div>{{ name }}</div>
       <input type="string" v-model="name" placeholder="NAME" /><br />
       <input type="string" v-model="password" placeholder="PASSWORD" /><br />
       <button v-on:click="signin()">SIGNIN</button>

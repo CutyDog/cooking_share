@@ -17,10 +17,10 @@ export default {
     };
   },
   methods: {
-    getProfile: async function () {
+    getLogIn: async function () {
       const self = this;
       const result = await axios
-        .get("/api/user/profile", {
+        .get("/api/user/log_in", {
           withCredentials: true,
         })
         .catch(function () {
@@ -37,7 +37,7 @@ export default {
         return;
       }
 
-      this.name = result.data.profile.name;
+      this.name = result.data.log_in.name;
     },
     logout: async function () {
       const self = this;

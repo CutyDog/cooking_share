@@ -11,6 +11,7 @@ class Api::AuthController < Api::Base
       render json: {state:"failure",msg:"Error"} , status: 403
     end
   end
+  
 
   private
   def auth_params
