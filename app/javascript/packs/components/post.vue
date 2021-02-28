@@ -30,5 +30,48 @@
         </div>
       </form>
     </div>
+    <input v-model="user_id" class="form-control" placeholder="User ID">
+    <input v-model="title" class="form-control" placeholder="Add Title">
+    <input v-model="text" class="form-control" placeholder="Add Text">
+    <div v-on:click="createPost" class="btn-floating waves-effect waves-light red">POST</div>
   </div>  
 </template>
+
+
+<script>
+import axios from 'axios';
+
+export default {
+  data: function () {
+    return {
+      posts: [],
+      title: '',
+      text: '',
+      user_id: '',
+    }
+  },
+  mounted: function () {
+    this.fetchPosts();
+  },  
+  methods: {
+    
+    createPost: function () {
+      if (!this.title) return;
+          
+      axios.post('/api/posts', {
+        post: { 
+          title: this.title,
+          text: this.text,
+          user_id: this.user_id,
+        }, 
+      })
+      .then((response) => {
+        this.posts.unshift(response.data.post);
+        this.newPost = '';
+      }, (error) => {
+        console.log(error);
+      });
+    }, 
+  },
+}  
+</script>

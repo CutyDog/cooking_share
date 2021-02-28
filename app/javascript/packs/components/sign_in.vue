@@ -1,12 +1,29 @@
 <template>
   <div class="sign_in">
-    Sign In
-    <div>
-      <div>{{ name }}</div>
-      <input type="string" v-model="name" placeholder="NAME" /><br />
-      <input type="string" v-model="password" placeholder="PASSWORD" /><br />
-      <button v-on:click="signin()">SIGNIN</button>
-    </div>
+    <div class="container">
+      <div class="row" style="padding-top:20px;">
+        <div class="col s12">
+          <p>Sign In Page</p>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="name" v-model="name" class="materialize-textarea"></textarea>
+            <label for="name">Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="password" v-model="password" class="materialize-textarea"></textarea>
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="col s12 offset-s4">
+          <button v-on:click="signin()" class="btn waves-effect waves-light" name="action">
+            Sign In
+          </button>  
+        </div>
+      </div>
+    </div> 
   </div>
 </template>
 

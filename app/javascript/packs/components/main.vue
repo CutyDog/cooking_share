@@ -11,6 +11,8 @@
             <img v-else src="../../../assets/images/sample1.jpg" alt="" class="circle responsive-img">
           </div>
           <div class="col s10">
+            <span class="black-title" style="font-weight:bold">{{post.user_id}}</span>
+            <br></br>
             <span class="black-title" style="font-weight:bold">{{post.title}}</span>
             <br></br>
             <span class="black-text">{{post.text}}</span>

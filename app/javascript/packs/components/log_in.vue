@@ -1,31 +1,40 @@
 <template>
   <div class="log_in">
     <div class="container">
-      <div class="row">
-
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="name" v-model="name" class="materialize-textarea"></textarea>
-              <label for="name">Name</label>
-            </div>
+      <div class="row" style="padding-top:20px;">
+        <div class="col s12">
+          <p>Log In Page</p>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="name" v-model="name" class="materialize-textarea"></textarea>
+            <label for="name">Name</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="password" v-model="password" class="materialize-textarea"></textarea>
-              <label for="password">Password</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="password" v-model="password" class="materialize-textarea"></textarea>
+            <label for="password">Password</label>
           </div>
+        </div>
+        <div class="row">
           <div class="col s12 offset-s4">
             <button v-on:click="login()" class="btn waves-effect waves-light" name="action">
               Log In
             </button>  
           </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <br></br>
+            <p>Sing In Page is below</p>
+          </div>
           <div class="col s12 offset-s4">
             <router-link to="/sign_in">
-              <button class="waves-effect waves-light btn">Sign In</button>
+              <button class="btn waves-effect waves-light pink lighten-2">Sign In</button>
             </router-link>
           </div>
-
+        </div>
       </div>
     </div> 
   </div>

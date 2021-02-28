@@ -1,4 +1,6 @@
 class Api::PostsController < ApplicationController
+  
+  skip_before_action :verify_authenticity_token
 
   # GET /tasks
   def index
@@ -9,13 +11,15 @@ class Api::PostsController < ApplicationController
   # POST /tasks
   def create
     @post = Post.new(post_params)
-
+    #@post.user = current_user
+    
     if @post.save
       render :show, status: :created
     else
       render json: @post.errors, status: :unprocessable_entity
-    end
+    end  
   end
+
 
   # PATCH/PUT /tasks/1
   def update
@@ -29,6 +33,7 @@ class Api::PostsController < ApplicationController
 
 private
  def post_params
-  params.require(:post).permit(:title, :text, :img)
+    params.require(:post).permit(:title, :text, :img, :user_id)
+    params.fetch(:post, {}).permit(:title, :text, :img, :user_id)    
  end
 end
