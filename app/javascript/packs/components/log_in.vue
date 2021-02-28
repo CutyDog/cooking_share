@@ -2,7 +2,7 @@
   <div class="log_in">
     <div class="container">
       <div class="row">
-        <form class="col s12">
+
           <div class="row">
             <div class="input-field col s12">
               <textarea id="name" v-model="name" class="materialize-textarea"></textarea>
@@ -25,7 +25,7 @@
               <button class="waves-effect waves-light btn">Sign In</button>
             </router-link>
           </div>
-        </form>
+
       </div>
     </div> 
   </div>
@@ -56,13 +56,13 @@ export default {
             return qs.stringify(params, { arrayFormat: "brackets" });
           },
         })
+        .then(response => {
+          this.$router.push("../mypage");
+        })
         .catch(function () {
           self.message = "入力エラー";
         });
 
-      if (result.data.state == "success") {
-        this.$router.push("../mypage.vue");
-      }
     },
   },
 };

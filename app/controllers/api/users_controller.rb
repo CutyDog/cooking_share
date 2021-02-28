@@ -33,11 +33,7 @@ class Api::UsersController < Api::Base
     # cookieを削除
     cookies.delete :authed
 
-    if user.remove_session_key
-      render json: {state:"success",msg:"Log Outed" } , status: 200
-    else
-      render json: {state:"failure",msg:"Error"} , status: 403
-    end
+    render json: {state:"success",msg:"Log Outed" } , status: 200
   end
   
   private

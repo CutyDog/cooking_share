@@ -24,7 +24,7 @@ export default {
           withCredentials: true,
         })
         .catch(function () {
-          self.$router.push("/log_in");
+          self.$router.push("../log_in");
           return;
         });
 
@@ -33,7 +33,7 @@ export default {
       }
 
       if (result.data.state != "success") {
-        this.$router.push("/log_in");
+        this.$router.push("../log_in");
         return;
       }
 
@@ -45,21 +45,16 @@ export default {
         .post("/api/user/log_out", {
           withCredentials: true,
         })
+        .then(response => {
+          self.$router.push("../log_in");
+        })
         .catch(function () {
-          self.$router.push("/log_in");
+          self.$router.push("../log_in");
         });
-
-      if (result === undefined) {
-        return;
-      }
-
-      if (result.data.state != "success") {
-        self.$router.push("/log_in");
-      }
     },
   },
   mounted: async function () {
-    await this.getProfile();
+    await this.getLogIn();
   },
 };
 </script>

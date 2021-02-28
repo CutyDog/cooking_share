@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/post',   to: 'home#index'
   get '/mypage', to: 'home#index'
   get '/search', to: 'home#index'
+  get '/log_in', to: 'home#index'
   
   namespace :api, format: 'json' do
     resources :posts, only: [:index, :create, :update]
